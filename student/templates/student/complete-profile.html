@@ -1,0 +1,124 @@
+{% extends 'dashboard/student-base.html' %}
+{% block page_content %}
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+            <!-- <div class="page-title">
+                <div class="title_left">
+                    <h3>Form Validation</h3>
+                </div>
+
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Student Profile <small></small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a</li> -->
+                                <!-- <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Settings 1</a></li>
+                                        <li><a href="#">Settings 2</a></li>
+                                    </ul>
+                                </li> -->
+                                <!-- <li><a class="close-link"><i class="fa fa-close"></i></a></li> -->
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="x_content bs-example-popovers">
+                                <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                    </button>
+                                    <strong>Hi</strong>! 👋 Welcome. You made a great choice joining <b>MyTutz</b> 😊. Please complete your profile to get started
+                                </div>
+                            </div>
+                            <form method="POST" class="form-horizontal form-label-left" data-parsley-validate>
+                                <!-- <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a></p>
+                                <span class="section">Personal Info</span> -->
+                                <!-- <div class="item form-group">
+                                    <p style="text-align: right" class="col-md-3 col-sm-3 col-xs-12">Referral Code</p>
+                                    <p class="col-md-6 col-sm-6 col-xs-12">
+                                        68982729 <span>   (Refer and gain <a href="#"><b>Points</b></a>)</span>
+                                    </p>
+                                </div> -->
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="first_name" class="form-control col-md-7 col-xs-12" maxlength="100" data-validate-length-range="6" data-validate-words="2" name="first_name" placeholder="" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Last Name <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="last_name" class="form-control col-md-7 col-xs-12" maxlength="100" data-validate-length-range="6" data-validate-words="2" name="last_name" placeholder="" required="required" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Phone <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="number" id="tel" name="tel" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Institution <span class="required">*</span> </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select id="institution" name="institution" class="select2_group form-control" required>
+                                        {% for institution in institutions %}
+                                            <option value="{{institution.id}}">{{institution.name}}</option>
+                                        {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Faculty <span class="required">*</span> </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select id="faculty" name="faculty" class="select2_group form-control" required>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Department <span class="required">*</span> </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select id="department" name="department" class="select2_group form-control" required>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Department <span class="required">*</span> </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="tags_1" type="text" class="tags form-control" value="social, adverts, sales" data-tagsinput-init="true" style="display: none;"><div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;"><span class="tag"><span>social&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span><span class="tag"><span>adverts&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span><span class="tag"><span>sales&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span><span class="tag"><span>icons&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span><div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag" style="color: rgb(102, 102, 102); width: 72px;"></div><div class="tags_clear"></div></div>
+                                        <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                    </div>
+                                </div> -->
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <!-- <button type="submit" class="btn btn-primary">Cancel</button> -->
+                                        {% csrf_token %}
+                                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page content -->
+{% endblock page_content %}

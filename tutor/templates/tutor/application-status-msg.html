@@ -1,0 +1,37 @@
+{% extends 'dashboard/tutor-base.html' %}
+{% load static from static %}
+{% block page_content %}
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Application Status: <small class="{{text_color}}">{{application_status|upper}}</small></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div>
+                            {% if application_status == "pending" %}
+                            <p><b>Thanks for your interest in becoming a tutor at MyTutz. You would be notified via mail
+                                once the status of your application has changed</b>
+                            </p>
+                            {% endif %}
+                            {% if application_status == "denied" %}
+                            <p><b>Thanks for your interest in becoming a MyTutz tutor, but we are sorry at this time we
+                                have decided not to move forward with your application. 
+                                You can edit your profile again and re-submit in <span class="text-danger">6months</span></b>
+                            </p>
+                            {% endif %}
+                            {% if application_status == "success" %}
+                            <p><b>Dear Sir, We have decided to move forward with you becoming a MyTutz tutor.</b></p>
+                            <button class="btn btn-success">Continue</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

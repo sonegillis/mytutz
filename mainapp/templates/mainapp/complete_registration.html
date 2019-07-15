@@ -1,0 +1,68 @@
+{% load static from static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Complete Registraton</title>
+
+    <!-- Icons font CSS-->
+    <link href="{% static 'vendor/plugins/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css' %}" rel="stylesheet" media="all">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css/tooltipster.bundle.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css/tooltipster-sideTip-noir.min.css' %}" />
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="{% static 'mainapp/css/main.css' %}" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-black p-t-50 p-b-50 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h3 class="title">Complete MyTutz Registration as {{category}}</h3>
+                    <form id="user-form" method="POST">
+                        <div class="input-group">
+                            <input id="email" class="input--style-3" type="text" placeholder="email" name="email" value="{{email}}" readonly>
+                        </div>
+                        <div class="input-group">
+                            <input id="password1" class="input--style-3" type="password" placeholder="Password" name="password1" required>
+                        </div>
+                        <div class="input-group">
+                            <input id="password2" class="input--style-3" type="password" placeholder="Confirm Password" name="password2" required>
+                        </div>
+                        <div class="p-t-10">
+                            {% csrf_token %}
+                            <button class="btn btn--pill btn--green" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'vendor/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.0/additional-methods.min.js"></script>
+	<script src="http://malsup.github.com/jquery.form.js"></script> 
+    <script type="text/javascript" src="{% static 'vendor/js/tooltipster.bundle.min.js' %}"></script>
+    <script src="{% static 'mainapp/js/complete_registration.js' %}"></script>
+    <!-- Main JS-->
+    <script src="{% static 'mainapp/js/global.js' %}"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->

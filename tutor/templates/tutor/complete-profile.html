@@ -1,0 +1,172 @@
+{% extends 'dashboard/tutor-base.html' %}
+{% load static from static %}
+{% block page_content %}
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+            <!-- <div class="page-title">
+                <div class="title_left">
+                    <h3>Form Validation</h3>
+                </div>
+
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Tutor Profile <small></small></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="x_content bs-example-popovers">
+                                <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                    </button>
+                                    <strong>Hi</strong>! 👋 Welcome. We are glad having you at <b>MyTutz</b> 😊. Please complete your profile to get started
+                                </div>
+                            </div>
+                            <p class="clearfix"></p>
+                            <form method="POST" class="form-horizontal form-label-left accordion" data-parsley-validate enctype="multipart/form-data">
+                                <!-- <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a></p>
+                                <span class="section">Personal Info</span> -->
+                                <!-- <div class="item form-group">
+                                    <p style="text-align: right" class="col-md-3 col-sm-3 col-xs-12">Referral Code</p>
+                                    <p class="col-md-6 col-sm-6 col-xs-12">
+                                        68982729 <span>   (Refer and gain <a href="#"><b>Points</b></a>)</span>
+                                    </p>
+                                </div> -->
+                                <div id="accordion">
+                                    <div class="c-card">
+                                        <a href="#collapsePersonal" data-toggle="collapse"><div class="c-card-header">
+                                            <p>PERSONAL</p>
+                                        </div></a>
+                                        <div class="c-card-body collapse" id="collapsePersonal" data-parent="#accordion">
+                                            <div class="item form-group text-center">
+                                                <div class="col-md-5 col-sm-5 col-xs-0"></div>
+                                                <label class="custom-upload-1 col-md-3 col-sm-3 col-xs-12" for="profile-pic">
+                                                    {% if tutor.profile_pic.url %}
+                                                    <img  id="upload-img" src="{{tutor.profile_pic.url}}" alt="Profile Picture">
+                                                    {% else %}
+                                                    <img id="upload-img" src="{% static 'images/default-profile-tutor.jpg' %}" alt="Default profile pic">
+                                                    {% endif %}
+                                                    <input onchange="readImageUploadURL(this)" type="file" name="profile_pic" id="profile-pic" accept="image/*">
+                                                    <p>Upload</p>
+                                                </label>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Title <span class="required">*</span> </label>
+                                                <p class="col-md-6 col-sm-6 col-xs-12">
+                                                    Prof:
+                                                    <input type="radio" name="title" value="Prof" checked="" required />
+                                                    Dr:
+                                                    <input type="radio" name="title" value="Dr" />
+                                                    Mr:
+                                                    <input type="radio" name="title" value="Mr" />
+                                                    Mrs:
+                                                    <input type="radio" name="title" value="Mrs" />
+                                                </p>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name <span class="required">*</span></label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="first_name" class="form-control col-md-7 col-xs-12" maxlength="100" data-validate-length-range="6" data-validate-words="2" name="first_name" placeholder="" required="required" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Last Name <span class="required">*</span></label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="last_name" class="form-control col-md-7 col-xs-12" maxlength="100" data-validate-length-range="6" data-validate-words="2" name="last_name" placeholder="" required="required" type="text" required>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Phone <span class="required">*</span></label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="number" id="tel" name="tel" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Institution <span class="required">*</span> </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select id="institution" name="institution" class="select2_group form-control" required>
+                                                    {% for institution in institutions %}
+                                                        <option value="{{institution.id}}">{{institution.name}}</option>
+                                                    {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- closing c-card-->
+                                    <div class="c-card">
+                                        <a href="#collapseAcademic" data-toggle="collapse"><div class="c-card-header">
+                                            <p>ACADEMIC</p>
+                                        </div></a>
+                                        <div class="c-card-body collapse" id="collapseAcademic" data-parent="#accordion">
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qualification">Highest Degree Qualification <span class="required">*</span></label>
+                                                <div class="col-sm-6 col-xs-12">
+                                                    <select id="qualification" class="select2_single form-control" tabindex="-1" name="qualification" required>
+                                                        <option value="No Degree yet">No Degree yet</option>
+                                                        <option value="HND">HND</option>
+                                                        <option value="Bachelor">Bachelor Degree</option>
+                                                        <option value="Master">Master's Degree</option>
+                                                        <option value="PHD">PHD</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="transcript">Latest Academic Transcripts <span class="required">*</span></label>
+                                                <div class="col-sm-6 col-xs-12">
+                                                    <input type="file" required name="transcript" id="transcript">
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cv">CV <span class="required">*</span></label>
+                                                <div class="col-sm-6 col-xs-12">
+                                                    <input type="file" required name="cv" id="cv">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- closing card-->
+                                </div> <!-- closing accordion -->
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Course codes you can Tutor <span class="required">*</span></label>   
+                                    <div class="col-sm-6 col-xs-12">
+                                        <textarea name="courses" id="courses" cols="10" rows="2" style="margin-top: 8px" required></textarea>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-12" style="text-align: right">
+                                        <p>Enter list of course codes with comma (,) seperating each</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-muted">Clicking the submit button means you agreed to the <a href="#" class="text-primary"><small>terms and conditions</small></a> of the mytutz.
+                                        You will receive an email once the your application of being a tutor has been reviewed. This application will be based on
+                                        the information you submit here. You can also login any time to check the status of your tutor application. If not approved,
+                                        you will need <span class="text-danger">6 months</span> before you can edit your profile and resubmit your applicaton </p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-12 col-md-1 col-md-offset-11" style="margin-top: 8px">
+                                        <!-- <button type="submit" class="btn btn-primary">Cancel</button> -->
+                                        {% csrf_token %}
+                                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page content -->
+{% endblock page_content %}

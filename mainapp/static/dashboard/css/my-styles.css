@@ -1,0 +1,61 @@
+.custom-upload-1{
+    width: 100px;
+    height: 100px;
+    /* border: 2px solid black; */
+    border-radius: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+.custom-upload-1:hover img{
+    display: none
+}
+.custom-upload-1:hover{
+    background-color: #ffb606;
+    box-shadow: 1px 1px 12px 8px gray;
+}
+.custom-upload-1 p{
+    height: 100px;
+    line-height: 100px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.custom-upload-1 img{
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 100%;
+}
+.custom-upload-1 input{
+    display: none;
+    color: transparent;
+}
+.c-card{
+    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.c-card-header{
+    background-color: rgb(227,242,237);
+    background-color: rgb(227, 242, 237, 0.4);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    height: 50px;
+    padding-left: 20px;
+}
+.c-card-body{
+    padding-top: 8px;
+}
+.c-card-header:hover{
+    background-color: rgb(227,242,237);
+}
+.c-card-header:nth-child(n){
+    height: 50px;
+    line-height: 50px;
+    font-size: 2em
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}

@@ -1,0 +1,754 @@
+{% load static from static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block title %}
+	<title>MyTutz</title>
+{% endblock title %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Course Project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/css/bootstrap.min.css' %}">
+<link href="{% static 'vendor/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css' %}" rel="stylesheet" type="text/css">
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/css/loading.css' %}"/> 
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/css/loading-btn.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/css/tooltipster.bundle.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/css/tooltipster-sideTip-noir.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/responsive.css' %}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+
+{% endblock css %}
+</head>
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header d-flex flex-row">
+		<div class="header_content d-flex flex-row align-items-center">
+			<!-- Logo -->
+			<div class="logo_container">
+				<div class="logo">
+					<img src="{% static 'mainapp/img/logo.png' %}" alt="">
+					<span>MyTutz</span>
+				</div>
+			</div>
+
+			<!-- Main Navigation -->
+			<nav class="main_nav_container">
+				<div class="main_nav">
+					<ul class="main_nav_list">
+						<li class="main_nav_item"><a href="#">home</a></li>
+						<li class="main_nav_item"><a href="#">about us</a></li>
+						<li class="main_nav_item"><a href="courses.html">news</a></li>
+						<!-- <li class="main_nav_item"><a href="elements.html">elements</a></li> -->
+						<li class="main_nav_item"><a href="news.html">contact</a></li>
+						<li class="main_nav_item"><a href="#login">sign in</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<img src="{% static 'mainapp/img/phone-call.svg' %}" alt="">
+			<span>+237 67 190 6987</span>
+		</div>
+
+		<!-- Hamburger -->
+		<div class="hamburger_container">
+			<i class="fas fa-bars trans_200"></i>
+		</div>
+
+	</header>
+	
+	<!-- Menu -->
+	<div class="menu_container menu_mm">
+
+		<!-- Menu Close Button -->
+		<div class="menu_close_container">
+			<div class="menu_close"></div>
+		</div>
+
+		<!-- Menu Items -->
+		<div class="menu_inner menu_mm">
+			<div class="menu menu_mm">
+				<ul class="menu_list menu_mm">
+					<li class="menu_item menu_mm"><a href="#">Home</a></li>
+					<li class="menu_item menu_mm"><a href="#">About us</a></li>
+					<li class="menu_item menu_mm"><a href="courses.html">News</a></li>
+					<!-- <li class="menu_item menu_mm"><a href="elements.html">Elements</a></li> -->
+					<li class="menu_item menu_mm"><a href="news.html">Contact</a></li>
+					<li class="menu_item menu_mm"><a href="#login">Sign In</a></li>
+				</ul>
+
+				<!-- Menu Social -->
+				
+				<div class="menu_social_container menu_mm">
+					<ul class="menu_social menu_mm">
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+					</ul>
+				</div>
+
+				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
+			</div>
+
+		</div>
+
+	</div>
+    
+    {% block content %}
+	<!-- Home -->
+
+	<div class="home">
+		<!-- Hero Slider -->
+		<div class="hero_slider_container">
+			<div class="hero_slider owl-carousel">
+				
+				<!-- Hero Slide -->
+				<div class="hero_slide">
+					<div class="hero_slide_background" style="background-image:url('../static/mainapp/img/slider_background.jpg')"></div>
+					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
+						<div class="hero_slide_content text-center">
+							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Book your <span>Tutorials</span> today!</h1>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Hero Slide -->
+				<div class="hero_slide">
+					<div class="hero_slide_background" style="background-image:url('../static/mainapp/img/slider_background.jpg')"></div>
+					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
+						<div class="hero_slide_content text-center">
+							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Access <span>Resource</span> files</h1>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="hero_slider_left hero_slider_nav trans_200"><span class="trans_200">prev</span></div>
+			<div class="hero_slider_right hero_slider_nav trans_200"><span class="trans_200">next</span></div>
+		</div>
+
+	</div>
+    <div class="hero_buttons">
+        <div class="hero_buttons_inner">
+			<div class="container">
+				<div class="join-option row">
+					<div class="col-lg-2">
+					</div>
+					<div class="col-lg-4">
+						<button onclick="displayJoinForm('student')" id="become_a_student" type="submit" class="search_submit_button trans_200 ld-ext-left running" value="Submit">
+							Become A Student
+						</button>
+					</div>
+					<div class="col-lg-4">
+						<button onclick="displayJoinForm('tutor')" id="become_a_tutor" type="submit" class="search_submit_button trans_200" value="Submit">Become A Tutor</button>
+					</div>
+					<div class="col-lg-2">
+					</div>
+				</div>
+				<div class="join-form hide row">
+					<div class="col text-center">
+						<div class="no-margin-top newsletter_form_container mx-auto">
+							<form id="pre-register" method="POST">
+								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+									<input id="email" name="email" class="newsletter_email" type="email" placeholder="Email Address" title="Enter email">
+									{% csrf_token %}
+									<button id="join-button" type="submit" class="newsletter_btn newsletter_submit_btn trans_300" value="Submit">
+										
+									</button>
+									<button onclick="displayJoinOptions()" id="join-close-button" type="button" class="newsletter_btn newsletter_btn_danger trans_300">Close</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+	<div class="hero_boxes">
+		<div class="hero_boxes_inner">
+			<div class="container">
+				<div class="row">
+                    <div class="col-lg-4 hero_box_col">
+						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
+							<img src="{% static 'mainapp/img/books.svg' %}" class="svg" alt="">
+							<div class="hero_box_content">
+								<h2 class="hero_box_title">Universities</h2>
+								<a href="courses.html" class="hero_box_link">view more</a>
+							</div>
+						</div>
+                    </div>
+                    
+					<div class="col-lg-4 hero_box_col">
+						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
+							<img src="{% static 'mainapp/img//earth-globe.svg' %}" class="svg" alt="">
+							<div class="hero_box_content">
+								<h2 class="hero_box_title">Upcoming Tutorials</h2>
+								<a href="courses.html" class="hero_box_link">view more</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 hero_box_col">
+						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
+							<img src="{% static 'mainapp/img/professor.svg' %}" class="svg" alt="">
+							<div class="hero_box_content">
+								<h2 class="hero_box_title">Our Tutors</h2>
+								<a href="hutoreachers.html" class="hero_box_link">view more</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+    </div>
+    
+
+	<!-- Popular -->
+
+	<div class="popular page_section">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title text-center">
+						<h1>Popular Courses</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="row course_boxes">
+				<!-- Popular Course Item -->
+				<div class="col-lg-4 course_box">
+					<div class="card">
+						<img class="card-img-top" src="{% static 'mainapp/img/course_1.jpg' %}" alt="https://unsplash.com/@kellybrito">
+						<div class="card-body text-center">
+							<div class="card-title"><a href="courses.html">CVE 101</a></div>
+							<div class="card-text">Civics and Ethics Course</div>
+						</div>
+						<div class="price_box d-flex flex-row align-items-center">
+							<div class="course_author_image">
+								<img class="custom_author_image" src="{% static 'mainapp/img/profile.jpg' %}" alt="https://unsplash.com/@mehdizadeh">
+							</div>
+							<div class="course_author_name">Mekolle Sone, <span>Lecturer</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>400F</span></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Popular Course Item -->
+				<div class="col-lg-4 course_box">
+					<div class="card">
+						<img class="card-img-top" src="{% static 'mainapp/img/course_2.jpg' %}" alt="https://unsplash.com/@cikstefan">
+						<div class="card-body text-center">
+							<div class="card-title"><a href="courses.html">FRE 102</a></div>
+							<div class="card-text">French Course</div>
+						</div>
+						<div class="price_box d-flex flex-row align-items-center">
+							<div class="course_author_image">
+								<img class="custom_author_image" src="{% static 'mainapp/img/profile.jpg' %}" alt="https://unsplash.com/@mehdizadeh">
+							</div>
+							<div class="course_author_name">Mekolle Sone, <span>Lecturer</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>500F</span></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Popular Course Item -->
+				<div class="col-lg-4 course_box">
+					<div class="card">
+						<img class="card-img-top" src="{% static 'mainapp/img/course_3.jpg' %}" alt="https://unsplash.com/@dsmacinnes">
+						<div class="card-body text-center">
+							<div class="card-title"><a href="courses.html">ENG 101</a></div>
+							<div class="card-text">English Course</div>
+						</div>
+						<div class="price_box d-flex flex-row align-items-center">
+							<div class="course_author_image">
+								<img class="custom_author_image" src="{% static 'mainapp/img/profile.jpg' %}" alt="https://unsplash.com/@mehdizadeh">
+							</div>
+							<div class="course_author_name">Mekolle Sone, <span>Lecturer</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>200F</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<!-- Register -->
+
+	<div class="register">
+
+		<div class="container-fluid">
+			
+			<div class="row row-eq-height">
+				<div class="col-lg-6 nopadding">
+					<!-- <div class="register_section d-flex flex-column align-items-center justify-content-center">
+						<div class="register_content text-center"  style="background: url('../static/mainapp/img/auditorium-benches-chairs.jpg')">
+
+						</div>
+
+					</div> -->
+					<!-- Register -->
+
+					<div class="register_section d-flex flex-column align-items-center justify-content-center">
+						<div class="register_content text-center">
+							<h1 class="register_title">Sign In now so you don't miss a tutorial</h1>
+							<p class="register_text">Tutorial is an important teaching-learning tool. It helps learners enhance their intellectual, communication and social skills. ... A tutorial is a method of transferring knowledge and may be used as a part of a learning process. More interactive and specific than a book or a lecture, a tutorial seeks to teach by example and supply the information to complete a certain task.</p>
+							<div class="button button_1 register_button mx-auto trans_200"><a href="#">register now</a></div>
+						</div>
+					</div>
+
+				</div>
+
+				<div id="login" class="col-lg-6 nopadding">
+					
+					<!-- Search -->
+
+					<div class="search_section d-flex flex-column align-items-center justify-content-center">
+						<div class="search_background" style="background-image:url('../static/mainapp/img/search_background.jpg');"></div>
+						<div class="search_content text-center">
+							<h3 id="login_error" style="color:rgba(255,0,0,0.9)" class="hide">Email and password combination does not match</h3>
+							<form id="login_form" class="search_form" method="POST">
+								{% csrf_token %}
+								<input onkeypress="$('#login_error').hide();" id="signin_email" class="input_field search_form_category" type="email" name="signin_email" placeholder="Email">
+								<input onkeypress="$('#login_error').hide();" id="password" class="input_field search_form_degree" type="password" name="password" placeholder="password">
+								{% csrf_token %}
+								<button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">Log In</button>
+							</form>
+						</div> 
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Services -->
+
+	<div class="services page_section">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title text-center">
+						<h1>Our Services</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="row services_row">
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="{% static 'mainapp/img/earth-globe.svg' %}" alt="">
+					</div>
+					<h3>Online Courses</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="{% static 'mainapp/img/exam.svg' %}" alt="">
+					</div>
+					<h3>Indoor Courses</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="{% static 'mainapp/img/books.svg' %}" alt="">
+					</div>
+					<h3>Amazing Library</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="{% static 'mainapp/img/professor.svg' %}" alt="">
+					</div>
+					<h3>Exceptional Professors</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="{% static 'mainapp/img/blackboard.svg' %}" alt="">
+					</div>
+					<h3>Top Programs</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="{% static 'mainapp/img/mortarboard.svg' %}" alt="">
+					</div>
+					<h3>Graduate Diploma</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Testimonials -->
+
+	<div class="testimonials page_section">
+		<!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->
+		<div class="testimonials_background_container prlx_parent">
+			<div class="testimonials_background prlx" style="background-image:url('../static/mainapp/img/testimonials_background.jpg')"></div>
+		</div>
+		<div class="container">
+
+			<div class="row">
+				<div class="col">
+					<div class="section_title text-center">
+						<h1>What our students say</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1">
+					
+					<div class="testimonials_slider_container">
+
+						<!-- Testimonials Slider -->
+						<div class="owl-carousel owl-theme testimonials_slider">
+							
+							<!-- Testimonials Item -->
+							<div class="owl-item">
+								<div class="testimonials_item text-center">
+									<div class="quote">“</div>
+									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+									<div class="testimonial_user">
+										<div class="testimonial_image mx-auto">
+											<img src="{% static 'mainapp/img/testimonials_user.jpg' %}" alt="">
+										</div>
+										<div class="testimonial_name">james cooper</div>
+										<div class="testimonial_title">Graduate Student</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Testimonials Item -->
+							<div class="owl-item">
+								<div class="testimonials_item text-center">
+									<div class="quote">“</div>
+									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+									<div class="testimonial_user">
+										<div class="testimonial_image mx-auto">
+											<img src="{% static 'mainapp/img/testimonials_user.jpg' %}" alt="">
+										</div>
+										<div class="testimonial_name">james cooper</div>
+										<div class="testimonial_title">Graduate Student</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Testimonials Item -->
+							<div class="owl-item">
+								<div class="testimonials_item text-center">
+									<div class="quote">“</div>
+									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+									<div class="testimonial_user">
+										<div class="testimonial_image mx-auto">
+											<img src="{% static 'mainapp/img/testimonials_user.jpg' %}" alt="">
+										</div>
+										<div class="testimonial_name">james cooper</div>
+										<div class="testimonial_title">Graduate Student</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Events -->
+
+	<div class="events page_section">
+		<div class="container">
+			
+			<div class="row">
+				<div class="col">
+					<div class="section_title text-center">
+						<h1>Upcoming Events</h1>
+					</div>
+				</div>
+			</div>
+			
+			<div class="event_items">
+
+				<!-- Event Item -->
+				<div class="row event_item">
+					<div class="col">
+						<div class="row d-flex flex-row align-items-end">
+
+							<div class="col-lg-2 order-lg-1 order-2">
+								<div class="event_date d-flex flex-column align-items-center justify-content-center">
+									<div class="event_day">07</div>
+									<div class="event_month">January</div>
+								</div>
+							</div>
+
+							<div class="col-lg-6 order-lg-2 order-3">
+								<div class="event_content">
+									<div class="event_name"><a class="trans_200" href="#">Student Festival</a></div>
+									<div class="event_location">Grand Central Park</div>
+									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
+								</div>
+							</div>
+
+							<div class="col-lg-4 order-lg-3 order-1">
+								<div class="event_image">
+									<img src="{% static 'mainapp/img/event_1.jpg' %}" alt="https://unsplash.com/@theunsteady5">
+								</div>
+							</div>
+
+						</div>	
+					</div>
+				</div>
+
+				<!-- Event Item -->
+				<div class="row event_item">
+					<div class="col">
+						<div class="row d-flex flex-row align-items-end">
+
+							<div class="col-lg-2 order-lg-1 order-2">
+								<div class="event_date d-flex flex-column align-items-center justify-content-center">
+									<div class="event_day">07</div>
+									<div class="event_month">January</div>
+								</div>
+							</div>
+
+							<div class="col-lg-6 order-lg-2 order-3">
+								<div class="event_content">
+									<div class="event_name"><a class="trans_200" href="#">Open day in the Univesrsity campus</a></div>
+									<div class="event_location">Grand Central Park</div>
+									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
+								</div>
+							</div>
+
+							<div class="col-lg-4 order-lg-3 order-1">
+								<div class="event_image">
+									<img src="{% static 'mainapp/img/event_2.jpg' %}" alt="https://unsplash.com/@claybanks1989">
+								</div>
+							</div>
+
+						</div>	
+					</div>
+				</div>
+
+				<!-- Event Item -->
+				<div class="row event_item">
+					<div class="col">
+						<div class="row d-flex flex-row align-items-end">
+
+							<div class="col-lg-2 order-lg-1 order-2">
+								<div class="event_date d-flex flex-column align-items-center justify-content-center">
+									<div class="event_day">07</div>
+									<div class="event_month">January</div>
+								</div>
+							</div>
+
+							<div class="col-lg-6 order-lg-2 order-3">
+								<div class="event_content">
+									<div class="event_name"><a class="trans_200" href="#">Student Graduation Ceremony</a></div>
+									<div class="event_location">Grand Central Park</div>
+									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
+								</div>
+							</div>
+
+							<div class="col-lg-4 order-lg-3 order-1">
+								<div class="event_image">
+									<img src="{% static 'mainapp/img/event_3.jpg' %}" alt="https://unsplash.com/@juanmramosjr">
+								</div>
+							</div>
+
+						</div>	
+					</div>
+				</div>
+
+			</div>
+				
+		</div>
+	</div>
+    {% endblock content %}
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			
+			<!-- Newsletter -->
+
+			<div class="newsletter">
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center">
+							<h1>Subscribe to newsletter</h1>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col text-center">
+						<div class="newsletter_form_container mx-auto">
+							<form action="post">
+								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+									<input id="newsletter_email" class="newsletter_email" type="email" placeholder="Email Address" required="required" data-error="Valid email is required.">
+									<button id="newsletter_submit" type="submit" class="newsletter_btn newsletter_submit_btn trans_300" value="Submit">Subscribe</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Footer Content -->
+
+			<div class="footer_content">
+				<div class="row">
+
+					<!-- Footer Column - About -->
+					<div class="col-lg-3 footer_col">
+
+						<!-- Logo -->
+						<div class="logo_container">
+							<div class="logo">
+								<img src="{% static 'mainapp/img/logo.png' %}" alt="">
+								<span>course</span>
+							</div>
+						</div>
+
+						<p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
+
+					</div>
+
+					<!-- Footer Column - Menu -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_column_title">Menu</div>
+						<div class="footer_column_content">
+							<ul>
+								<li class="footer_list_item"><a href="#">Home</a></li>
+								<li class="footer_list_item"><a href="#">About Us</a></li>
+								<li class="footer_list_item"><a href="courses.html">Courses</a></li>
+								<li class="footer_list_item"><a href="news.html">News</a></li>
+								<li class="footer_list_item"><a href="contact.html">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Footer Column - Usefull Links -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_column_title">Usefull Links</div>
+						<div class="footer_column_content">
+							<ul>
+								<li class="footer_list_item"><a href="#">Testimonials</a></li>
+								<li class="footer_list_item"><a href="#">FAQ</a></li>
+								<li class="footer_list_item"><a href="#">Community</a></li>
+								<li class="footer_list_item"><a href="#">Campus Pictures</a></li>
+								<li class="footer_list_item"><a href="#">Tuitions</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Footer Column - Contact -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_column_title">Contact</div>
+						<div class="footer_column_content">
+							<ul>
+								<li class="footer_contact_item">
+									<div class="footer_contact_icon">
+										<img src="{% static 'mainapp/img/placeholder.svg' %}" alt="https://www.flaticon.com/authors/lucy-g">
+									</div>
+									Blvd Libertad, 34 m05200 Arévalo
+								</li>
+								<li class="footer_contact_item">
+									<div class="footer_contact_icon">
+										<img src="{% static 'mainapp/img/smartphone.svg' %}" alt="https://www.flaticon.com/authors/lucy-g">
+									</div>
+									0034 37483 2445 322
+								</li>
+								<li class="footer_contact_item">
+									<div class="footer_contact_icon">
+										<img src="{% static 'mainapp/img/envelope.svg' %}" alt="https://www.flaticon.com/authors/lucy-g">
+									</div>hello@company.com
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Footer Copyright -->
+
+			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
+				<div class="footer_copyright">
+					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+				</div>
+				<div class="footer_social ml-sm-auto">
+					<ul class="menu_social">
+						<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+						<li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+						<li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+
+</div>
+{% block javascript %}
+    <script src="{% static 'vendor/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/plugins/greensock/TweenMax.min.js' %}"></script>
+    <script src="{% static 'vendor/plugins/greensock/TimelineMax.min.js' %}"></script>
+    <script src="{% static 'vendor/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+    <script src="{% static 'vendor/plugins/greensock/animation.gsap.min.js' %}"></script>
+    <script src="{% static 'vendor/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+    <script src="{% static 'vendor/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+    <script src="{% static 'vendor/plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
+	<script src="{% static 'vendor/plugins/easing/easing.js' %}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.0/additional-methods.min.js"></script>
+	<script src="http://malsup.github.com/jquery.form.js"></script> 
+	<script type="text/javascript" src="{% static 'vendor/js/tooltipster.bundle.min.js' %}"></script>
+	<script src="{% static 'mainapp/js/custom.js' %}"></script>
+	
+{% endblock javascript %}
+
+</body>
+</html>
