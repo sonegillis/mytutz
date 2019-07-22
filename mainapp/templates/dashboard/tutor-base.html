@@ -45,7 +45,7 @@
 
 
   </head>
-
+s
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -61,9 +61,9 @@
             <div class="profile clearfix">
               <div class="profile_pic">
                 {% if tutor.profile_pic %}
-                <img src="{{tutor.profile_pic.url}}" alt="..." class="img-circle profile_img">
+                <img src="{{tutor.profile_pic.url}}" alt="Profile Picture" class="img-circle profile_img">
                 {% else %}
-                <img src="{% static 'images/profile.jpg' %}" alt="..." class="img-circle profile_img">
+                <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture" class="img-circle profile_img">
                 {% endif %}
               </div>
               <div class="profile_info">
@@ -87,15 +87,11 @@
                       <li><a href="index3.html">Dashboard3</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="{% url 'tutor:my-courses' %}"><i class="fa fa-book"></i>My Courses</a>
-                    <!-- <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul> -->
+                  <li><a><i class="fa fa-book"></i>My Tutorial <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'tutor:my-courses' %}">Sessions</a></li>
+                      <li><a href="#">Statistics</a></li>
+                    </ul>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -209,7 +205,11 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{% static 'images/profile.jpg' %}" alt="">{{tutor.first_name}} {{tutor.last_name}}
+                    {% if tutor.profile_pic %}
+                    <img src="{{tutor.profile_pic.url}}" alt="Profile Picture" class="img-circle">
+                    {% else %}
+                    <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture" class="img-circle">
+                    {% endif %}{{tutor.first_name}} {{tutor.last_name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -238,7 +238,11 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="{% static 'images/profile.jpg' %}" alt="Profile Image" /></span>
+                        <span class="image">{% if tutor.profile_pic %}
+                          <img src="{{tutor.profile_pic.url}}" alt="Profile Picture" class="img-circle">
+                          {% else %}
+                          <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture" class="img-circle">
+                          {% endif %}</span>
                         <span>
                           <span>{{tutor.first_name}} {{tutor.last_name}}</span>
                           <span class="time">3 mins ago</span>
@@ -250,7 +254,11 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="{% static 'images/profile.jpg' %}" alt="Profile Image" /></span>
+                        <span class="image">{% if tutor.profile_pic %}
+                          <img src="{{tutor.profile_pic.url}}" alt="Profile Picture" class="img-circle">
+                          {% else %}
+                          <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture" class="img-circle">
+                          {% endif %}</span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -262,7 +270,11 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="{% static 'images/profile.jpg' %}" alt="Profile Image" /></span>
+                        <span class="image">{% if tutor.profile_pic %}
+                          <img src="{{tutor.profile_pic.url}}" alt="Profile Picture" class="img-circle">
+                          {% else %}
+                          <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture" class="img-circle">
+                          {% endif %}</span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -274,7 +286,11 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="{% static 'images/profile.jpg' %}" alt="Profile Image" /></span>
+                        <span class="image">{% if tutor.profile_pic %}
+                          <img src="{{tutor.profile_pic.url}}" alt="Profile Picture" class="img-circle">
+                          {% else %}
+                          <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture" class="img-circle">
+                          {% endif %}</span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -668,7 +684,7 @@
         <!-- /footer content -->
       </div>
     </div>
-
+    
     <!-- jQuery -->
     <script src="{% static 'vendor/js/jquery.min.js' %}"></script>
     <!-- Bootstrap -->

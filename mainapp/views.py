@@ -57,7 +57,7 @@ def tutor_application_redirect(func):
         context = {
             "application_status" : tutor.application_status,
         }
-        if tutor.application_viewed:
+        if tutor.application_status == "approved":
             return func(*args, **kwargs)
         else:
             return HttpResponseRedirect(reverse('tutor:application-status'))
@@ -180,6 +180,7 @@ def user_login(request):
         if "tutors" in groups:
             return HttpResponse(reverse('tutor:home'))
     else:
+        print(email, password)
         return HttpResponse("", status=404)
 
 def get_faculty_options(request):

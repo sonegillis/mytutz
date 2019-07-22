@@ -26,7 +26,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Update Courses<small></small></h2>
+                            <h2>Tutorial Sessions<small></small></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a</li> -->
                                 <!-- <li class="dropdown">
@@ -36,7 +36,7 @@
                                         <li><a href="#">Settings 2</a></li>
                                     </ul>
                                 </li> -->
-                                <!-- <li><a class="close-link"><i class="fa fa-close"></i></a></li> -->
+                                <li><button class="btn btn-primary" data-toggle="modal" data-target="#addTutorialSession"><i class="fa fa-plus"></i></a></li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -50,6 +50,45 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- The Modal -->
+            <div class="modal" id="addTutorialSession">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+  
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Create a tutorial session</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+  
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <label for="email">Email address:</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Password:</label>
+                                    <input type="password" class="form-control" id="pwd">
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox"> Remember me
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form> 
+                        </div>
+  
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                        </div>
+  
                     </div>
                 </div>
             </div>

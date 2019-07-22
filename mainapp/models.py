@@ -8,6 +8,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import BaseUserManager
 
 
+transactions = [
+    ["cash_out", "Cash Out"],
+    ["cash_in", "Cash In"]
+]
+
 class MyUserManager(BaseUserManager):
     """
     A custom user manager to deal with emails as unique identifiers for auth
@@ -90,3 +95,20 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
+
+class Course(models.Model):
+    department = models.ForeignKey(Department, on_delete=models.PROTECT)
+    title = models.CharField(max_length=100)
+    code = models.CharField(max_length=15, unique=True)
+
+    def __str__(self):
+        return self.code
+
+class GeneralAccount(models.Model):
+    amount = models.BigIntegerField();
+
+class Transaction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    course = models.ForeignKey(Course, on_delete=models.PROTECT)
+    amount = models.BigIntegerField(default=0)
+    transaction_type = models.CharField(choices=transactions, max_length=15)

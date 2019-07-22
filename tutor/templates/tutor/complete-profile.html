@@ -140,9 +140,24 @@
                                     </div> <!-- closing card-->
                                 </div> <!-- closing accordion -->
                                 <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Search and add courses to tutor</label>
+                                    
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="course" type="text" list="courses-list" class="form-control">
+                                        <datalist id="courses-list" name="courses">
+                                        {% for course in courses %}
+                                            <option value="{{course.code}}">{{course.title}}</option>
+                                        {% endfor %}
+                                        </datalist>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Course codes you can Tutor <span class="required">*</span></label>   
-                                    <div class="col-sm-6 col-xs-12">
-                                        <textarea name="courses" id="courses" cols="10" rows="2" style="margin-top: 8px" required></textarea>
+                                    {% comment %} <div class="col-sm-6 col-xs-12">
+                                        <textarea name="selected-courses" id="selected-courses" cols="10" rows="2" style="margin-top: 8px" required disabeld></textarea>
+                                    </div> {% endcomment %}
+                                    <div id="courses" class="badge-item-div col-sm-6 col-xs-12">
+
                                     </div>
                                     <div class="col-sm-3 col-xs-12" style="text-align: right">
                                         <p>Enter list of course codes with comma (,) seperating each</p>

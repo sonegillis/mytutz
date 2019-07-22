@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import ArrayField
 from django.dispatch import receiver
 
 # app related imports
-from mainapp.models import Institution, Faculty, Department
+from mainapp.models import Institution, Faculty, Department, Course
 
 # system related imports 
 from datetime import datetime
@@ -45,6 +45,24 @@ class Tutor(models.Model):
 
     def __str__(self):
         return self.first_name + self.last_name
+
+class TutorCourse(models.Model):
+    course = models.ManyToManyField(Course)
+    tutor = models.ManyToManyField(Tutor)
+
+class TutorAccount(models.Model):
+    tutor = models.OneToOneField(Tutor, on_delete=models.CASCADE)
+    balance = models.BigIntegerField(default=0)
+
+class TutorialSession(models.Model):
+    tutor = models.ForeignKey(Tutor, on_delete=models.PROTECT)
+    course = models.ForeignKey(Course, on_delete=models.PROTECT)
+    cover_image = models.ImageField(upload_to=user_directory_path, null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    start_datetime = models.DateTimeField()
+    duration = models.BigIntegerField()
+    description = models.TextField()
+    cost = models.BigIntegerField()
 
 @receiver(models.signals.post_delete, sender=Tutor)
 def auto_delete_file_on_delete(sender, instance, **kwargs):

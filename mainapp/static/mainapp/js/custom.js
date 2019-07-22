@@ -106,6 +106,7 @@ $(document).ready(function(){
 			$(element).tooltipster('show');
 		},
 		submitHandler: function(form) {
+			alert('hander');
 			let form_data = $("#login_form").serialize();
 			$.ajax({
 				type: 'POST',

@@ -59,3 +59,11 @@
 .float-right{
     float: right;
 }
+
+.badge-item-div {
+    width: 100%;
+    border: 1px solid grey;
+    padding: 16px;
+    max-height: 80px;
+    overflow-y: scroll;
+}

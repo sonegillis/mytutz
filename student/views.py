@@ -37,7 +37,7 @@ def home(request):
         "student": student
     }
     
-    return render(request, 'dashboard/base.html', context)
+    return render(request, 'dashboard/student-base.html', context)
     # return HttpResponse("Welcome new student")
 
 @login_required

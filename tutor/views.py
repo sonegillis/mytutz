@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 # app related imports
 from .models import Tutor
-from mainapp.models import Institution, Faculty, Department, User
+from mainapp.models import Institution, Faculty, Department, User, Course
 from mainapp.views import generate_referral_code, category_check_factory_dectorator, tutor_application_redirect
 
 #system related imports 
@@ -39,16 +39,20 @@ def home(request):
         "tutor": tutor
     }
     
-    return render(request, 'dashboard/base.html', context)
+    return render(request, 'dashboard/tutor-base.html', context)
 
 @category_check_factory_dectorator('tutor')
 @login_required
 def complete_profile(request):
     institutions = Institution.objects.all()
+    courses = Course.objects.all();
     context = {
         "user": request.user,
-        "institutions": institutions
+        "institutions": institutions,
+        "courses": courses
     }
+
+    print(courses)
 
     if request.method == "POST":
         user = User.objects.filter(email=request.user)
