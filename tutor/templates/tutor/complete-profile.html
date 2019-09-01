@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <p class="clearfix"></p>
-                            <form method="POST" class="form-horizontal form-label-left accordion" data-parsley-validate enctype="multipart/form-data">
+                            <form id="submitForm" method="POST" class="form-horizontal form-label-left accordion" data-parsley-validate enctype="multipart/form-data">
                                 <!-- <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a></p>
                                 <span class="section">Personal Info</span> -->
                                 <!-- <div class="item form-group">
@@ -51,7 +51,7 @@
                                         <a href="#collapsePersonal" data-toggle="collapse"><div class="c-card-header">
                                             <p>PERSONAL</p>
                                         </div></a>
-                                        <div class="c-card-body collapse" id="collapsePersonal" data-parent="#accordion">
+                                        <div class="c-card-body" id="collapsePersonal" data-parent="#accordion">
                                             <div class="item form-group text-center">
                                                 <div class="col-md-5 col-sm-5 col-xs-0"></div>
                                                 <label class="custom-upload-1 col-md-3 col-sm-3 col-xs-12" for="profile-pic">
@@ -111,16 +111,14 @@
                                         <a href="#collapseAcademic" data-toggle="collapse"><div class="c-card-header">
                                             <p>ACADEMIC</p>
                                         </div></a>
-                                        <div class="c-card-body collapse" id="collapseAcademic" data-parent="#accordion">
+                                        <div class="c-card-body" id="collapseAcademic" data-parent="#accordion">
                                             <div class="item form-group">
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qualification">Highest Degree Qualification <span class="required">*</span></label>
                                                 <div class="col-sm-6 col-xs-12">
                                                     <select id="qualification" class="select2_single form-control" tabindex="-1" name="qualification" required>
-                                                        <option value="No Degree yet">No Degree yet</option>
-                                                        <option value="HND">HND</option>
-                                                        <option value="Bachelor">Bachelor Degree</option>
-                                                        <option value="Master">Master's Degree</option>
-                                                        <option value="PHD">PHD</option>
+                                                        {% for qualification in qualifications %}
+                                                            <option value="{{qualification.id}}">{{qualification.title}}</option>
+                                                        {% endfor %}
                                                     </select>
                                                 </div>
                                             </div>
@@ -139,29 +137,28 @@
                                         </div>
                                     </div> <!-- closing card-->
                                 </div> <!-- closing accordion -->
-                                <div class="form-group">
+                                <div class="form-group" style="margin-top: 24px;">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Search and add courses to tutor</label>
                                     
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="course" type="text" list="courses-list" class="form-control">
-                                        <datalist id="courses-list" name="courses">
-                                        {% for course in courses %}
-                                            <option value="{{course.code}}">{{course.title}}</option>
-                                        {% endfor %}
+                                        <input id="course" type="text" list="courses-list" name="course" class="form-control">
+                                        <datalist id="courses-list" name="courses-list">
+                                            {% for course in courses %}
+                                                <option value="{{course.id}}-{{course.code}}">{{course.title}}</option>
+                                            {% endfor %}
                                         </datalist>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Course codes you can Tutor <span class="required">*</span></label>   
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Course codes you can Tutor <span class="required">*</span></label>   
                                     {% comment %} <div class="col-sm-6 col-xs-12">
                                         <textarea name="selected-courses" id="selected-courses" cols="10" rows="2" style="margin-top: 8px" required disabeld></textarea>
                                     </div> {% endcomment %}
-                                    <div id="courses" class="badge-item-div col-sm-6 col-xs-12">
+                                    <div id="courses" class="badge-item-div col-md-6 col-sm-6 col-xs-12">
 
                                     </div>
-                                    <div class="col-sm-3 col-xs-12" style="text-align: right">
-                                        <p>Enter list of course codes with comma (,) seperating each</p>
-                                    </div>
+                                    <textarea style="visibility: hidden" id="txtAreaCourses" name="courses" rows="1" class="col-md-3 col-xs-12">
+                                    </textarea>
                                 </div>
                                 <div>
                                     <p class="text-muted">Clicking the submit button means you agreed to the <a href="#" class="text-primary"><small>terms and conditions</small></a> of the mytutz.
@@ -185,3 +182,7 @@
     </div>
     <!-- /page content -->
 {% endblock page_content %}
+
+{% block javascript %}
+    <script src="{% static 'dashboard/js/complete-profile.js' %}"></script>
+{% endblock %}

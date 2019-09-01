@@ -6,6 +6,7 @@ from django.dispatch import receiver
 
 # app related imports
 from mainapp.models import Institution, Faculty, Department, Course
+from student.models import Student
 
 # system related imports 
 from datetime import datetime
@@ -27,42 +28,67 @@ class TemporaryTutorRegistration(models.Model):
     email = models.EmailField()
     secret_token = models.CharField(max_length=124)
 
+class AcademicQualification(models.Model):
+    title = models.CharField(max_length=30);
+
+    def __str__(self):
+        return self.title
+
 class Tutor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     institution = models.ForeignKey(Institution, on_delete=models.PROTECT)
-    courses = ArrayField(models.CharField(max_length=20), null=True)
     referral_code = models.CharField(max_length=12)
     points = models.BigIntegerField(default=0)
     tel = models.CharField(max_length=30)
     application_status = models.CharField(choices=application_status, max_length=50, default="pending")
-    education_level = models.CharField(max_length=50)
-    profile_pic = models.ImageField(upload_to=user_directory_path, null=True)
+    academic_qualification = models.ForeignKey(AcademicQualification, on_delete=models.PROTECT)
+    profile_pic = models.ImageField(upload_to=user_directory_path, null=True, blank=True)
     transcript = models.FileField(upload_to=user_directory_path, null=True)
     cv = models.FileField(upload_to=user_directory_path, null=True)
     application_viewed = models.BooleanField(default=False)     # this will be set to true when the application_status has been updated
 
     def __str__(self):
-        return self.first_name + self.last_name
+        return self.first_name + " " + self.last_name
 
 class TutorCourse(models.Model):
-    course = models.ManyToManyField(Course)
-    tutor = models.ManyToManyField(Tutor)
+    course = models.ForeignKey(Course, on_delete=models.PROTECT)
+    tutor = models.ForeignKey(Tutor, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.tutor.first_name + " " + self.tutor.last_name + "  -  " + self.course.title
 
 class TutorAccount(models.Model):
     tutor = models.OneToOneField(Tutor, on_delete=models.CASCADE)
     balance = models.BigIntegerField(default=0)
+
+class TutorialLocation(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 class TutorialSession(models.Model):
     tutor = models.ForeignKey(Tutor, on_delete=models.PROTECT)
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
     cover_image = models.ImageField(upload_to=user_directory_path, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
-    start_datetime = models.DateTimeField()
-    duration = models.BigIntegerField()
-    description = models.TextField()
+    tutorial_date = models.DateField()
+    from_time = models.TimeField()
+    to_time = models.TimeField()
+    description = models.TextField(null=True)
     cost = models.BigIntegerField()
+    location = models.ForeignKey(TutorialLocation, on_delete=models.PROTECT)
+
+
+class BookedTutorialSession(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.PROTECT)
+    tutorial_session = models.ForeignKey(TutorialSession, on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.student.first_name + " booked for " + self.tutorial_session.course.title
 
 @receiver(models.signals.post_delete, sender=Tutor)
 def auto_delete_file_on_delete(sender, instance, **kwargs):

@@ -31,12 +31,12 @@ def profile_completion_redirect(func):
 def home(request):
     # if prompt_profile_completion(request.user):
     #     return HttpResponseRedirect(reverse('student:complete-profile'))
-    student = Student.objects.filter(user = request.user)
+    student = Student.objects.filter(user = request.user)[0]
     context = {
         "user": request.user,
         "student": student
     }
-    
+
     return render(request, 'dashboard/student-base.html', context)
     # return HttpResponse("Welcome new student")
 
@@ -72,7 +72,6 @@ def profile(request):
         "student": student
     }
     return render(request, 'student/profile.html', context)
-
 
 @category_check_factory_dectorator('student')
 @profile_completion_redirect
@@ -117,5 +116,8 @@ def edit_profile(request):
 @login_required
 def my_courses(request):
     student = Student.objects.get(user=request.user)
-    return render(request, 'student/my-courses.html')
+    context = {
+        'student': student
+    }
+    return render(request, 'student/my-courses.html', context)
     

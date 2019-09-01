@@ -1,0 +1,48 @@
+{% load static from static %}
+
+<div class="col-md-3 col-xs-12 widget widget_tally_box">
+    <div class="x_panel fixed_height_390">
+        <div class="x_content">
+            <div class="flex">
+                <ul class="list-inline widget_profile_box">
+                    <li>
+                        <i class="fas fa-pencil-alt"></i>
+                    </li>
+                    <li>
+                        {% if tutorial_session.cover_image %}
+                            <img src="{{tutorial_session.cover_image}}" alt="Tutorial cover" class="img-circle profile_img">
+                        {% else %}
+                            <img src="{% static 'images/default-tutorial-session-cover.jpg' %}" alt="default tutorial session cover" class="img-circle profile_img">
+                        {% endif %}
+                    </li>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+
+            <h3 class="name">{{tutorial_session.course.code}}</h3>
+
+            <div class="flex">
+                <ul class="list-inline count2">
+                    <li>
+                        <h5>{{tutorial_session.from_time}}</h5>
+                        <span>Start Time</span>
+                    </li>
+                    <li>
+                        <h3>{{tutorial_session.number_of_students}}</h3>
+                        <span>Registered Students</span>
+                    </li>
+                    <li>
+                        <h5>{{tutorial_session.to_time}}</h5>
+                        <span>End Time</span>
+                    </li>
+                </ul>
+            </div>
+            <p><b>{{tutorial_session.location}}</b></p>
+            <p>
+                {{tutorial_session.description}}
+            </p>
+        </div>
+    </div>
+</div>

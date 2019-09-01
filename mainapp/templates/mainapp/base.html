@@ -382,11 +382,11 @@
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="{% static 'mainapp/img/professor.svg' %}" alt="">
 					</div>
-					<h3>Exceptional Professors</h3>
+					<h3>Exceptional Tutors</h3>
 					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
 				</div>
 
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+				{% comment %} <div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="{% static 'mainapp/img/blackboard.svg' %}" alt="">
 					</div>
@@ -400,7 +400,7 @@
 					</div>
 					<h3>Graduate Diploma</h3>
 					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-				</div>
+				</div> {% endcomment %}
 
 			</div>
 		</div>
@@ -418,12 +418,12 @@
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h1>What our students say</h1>
+						<h1>What students say</h1>
 					</div>
 				</div>
 			</div>
 
-			<div class="row">
+			{% comment %} <div class="row">
 				<div class="col-lg-10 offset-lg-1">
 					
 					<div class="testimonials_slider_container">
@@ -480,14 +480,14 @@
 
 					</div>
 				</div>
-			</div>
+			</div> {% endcomment %}
 
 		</div>
 	</div>
 
 	<!-- Events -->
 
-	<div class="events page_section">
+	{% comment %} <div class="events page_section">
 		<div class="container">
 			
 			<div class="row">
@@ -593,7 +593,7 @@
 			</div>
 				
 		</div>
-	</div>
+	</div> {% endcomment %}
     {% endblock content %}
 	<!-- Footer -->
 
@@ -638,7 +638,7 @@
 						<div class="logo_container">
 							<div class="logo">
 								<img src="{% static 'mainapp/img/logo.png' %}" alt="">
-								<span>course</span>
+								<span>MYTUTZ</span>
 							</div>
 						</div>
 
@@ -709,11 +709,11 @@
 			<!-- Footer Copyright -->
 
 			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
-				<div class="footer_copyright">
+				{% comment %} <div class="footer_copyright">
 					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
-				</div>
+				</div> {% endcomment %}
 				<div class="footer_social ml-sm-auto">
 					<ul class="menu_social">
 						<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>

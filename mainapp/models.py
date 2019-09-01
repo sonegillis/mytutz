@@ -1,6 +1,4 @@
 from django.db import models
-
-# Create your models here.
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
@@ -112,3 +110,4 @@ class Transaction(models.Model):
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
     amount = models.BigIntegerField(default=0)
     transaction_type = models.CharField(choices=transactions, max_length=15)
+    

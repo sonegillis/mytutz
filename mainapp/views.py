@@ -91,8 +91,11 @@ def pre_registration(request):
         activation_link = request.build_absolute_uri('/')+"complete-registration/?email="+email+"&category=student"+"&key="+secret_token
         subject = "MyTutz Registration"
         msg = "Click " + activation_link + " to complete your student registration to MyTutz"
+
         try:
+            print('testing ', email)
             send_mail(subject, msg, "Sone Gillis at MyTutz", [email,], False)
+            print('testing2')
             TemporaryStudentRegistration(
                 email = email,
                 secret_token = secret_token

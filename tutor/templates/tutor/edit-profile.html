@@ -3,7 +3,7 @@
 {% block page_content %}
     <!-- page content -->
     <div class="right_col" role="main">
-        <div class="">
+        <div>
             <!-- <div class="page-title">
                 <div class="title_left">
                     <h3>Form Validation</h3>
@@ -80,7 +80,7 @@
                                         <input type="number" id="tel" name="tel" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12" required value="{{tutor.tel}}">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {% comment %} <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Institution <span class="required">*</span> </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select id="institution" name="institution" class="select2_group form-control" required>
@@ -121,7 +121,7 @@
                                             {% endfor %}
                                         </select>
                                     </div>
-                                </div>
+                                </div> {% endcomment %}
                                 <!-- <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Department <span class="required">*</span> </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">

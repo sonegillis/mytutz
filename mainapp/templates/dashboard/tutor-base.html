@@ -37,7 +37,7 @@
     <!-- JQVMap -->
     <link href="{% static 'vendor/css/jqvmap.min.css' %}" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="{% static 'vendor/css/daterangepicker.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/css/bootstrap-datetimepicker.css' %}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{% static 'dashboard/css/custom.min.css' %}" rel="stylesheet">
@@ -45,7 +45,6 @@
 
 
   </head>
-s
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -93,7 +92,7 @@ s
                       <li><a href="#">Statistics</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                  {% comment %} <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
                       <li><a href="media_gallery.html">Media Gallery</a></li>
@@ -126,7 +125,7 @@ s
                       <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                       <li><a href="fixed_footer.html">Fixed Footer</a></li>
                     </ul>
-                  </li>
+                  </li> {% endcomment %}
                 </ul>
               </div>
               <!-- <div class="menu_section">
@@ -677,7 +676,7 @@ s
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            {% comment %} Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a> {% endcomment %}
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -725,7 +724,7 @@ s
     <script src="{% static 'vendor/js/jquery.vmap.sampledata.js' %}"></script>
     <!-- bootstrap-daterangepicker -->
     <script src="{% static 'vendor/js/moment.min.js' %}"></script>
-    <script src="{% static 'vendor/js/daterangepicker.js' %}"></script>
+    <script src="{% static 'vendor/js/bootstrap-datetimepicker.min.js' %}"></script>
     <!-- bootstrap-wysiwyg -->
     <script src="{% static 'vendor/js/bootstrap-wysiwyg.min.js' %}"></script>
     <script src="{% static 'vendor/js/jquery.hotkeys.js' %}"></script>
@@ -746,9 +745,9 @@ s
     <script src="{% static 'vendor/js/starrr.js' %}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{% static 'dashboard/js/custom.min.js' %}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
     <!-- Writtern by developer for dashboard -->
-    <script src="{% static 'dashboard/js/dashboard.js' %}"></script>
     {% block js %}
     
     {% endblock js %}

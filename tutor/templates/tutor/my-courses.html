@@ -46,12 +46,17 @@
                                     <div class="chips chips-placeholder"></div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6">
-
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="existing-tutorial-sessions" class="d-flex">
+                {% for tutorial_session in tutorial_sessions %}
+                    {% include 'tutor/session-template.html' %}
+                {% endfor %}
             </div>
             <!-- The Modal -->
             <div class="modal" id="addTutorialSession">
@@ -66,28 +71,61 @@
   
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form action="/action_page.php">
+                            <form id="add-tutorial-session" method="POST">
                                 <div class="form-group">
-                                    <label for="email">Email address:</label>
-                                    <input type="email" class="form-control" id="email">
+                                    <label for="email">Course: </label>
+                                    <select id="course" class="select2_single form-control" tabindex="-1" name="course" required>
+                                        {% for tutor_course in tutor_courses %}
+                                            <option value="{{tutor_course.course.id}}">{{tutor_course.course.title}} - {{tutor_course.course.code}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        <label for="date">Date: </label>
+                                        <input type="date" class="form-control" id="date" name="date" required>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        <label for="time-from">Time / from: </label>
+                                        <input type="time" class="form-control" id="time-from" name="time-from" required>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        <label for="time-to">Time / To: </label>
+                                        <input type="time" class="form-control" id="time-to" name="time-to" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 form-group">
+                                        <label for="location">location: </label>
+                                        <select id="location" class="select2_single form-control" tabindex="-1" name="location" required>
+                                            {% for location in locations %}
+                                                <option value="{{location.id}}">{{location.name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-6 form-group">
+                                        <label for="cover-image">Cover Image: </label>
+                                        <input type="file" class="form-control" id="cover-image" name="cover-image">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cost">Cost / XAF: </label>
+                                    <input type="number" class="form-control" id="cost" name="cost">
                                 </div>
                                 <div class="form-group">
-                                    <label for="pwd">Password:</label>
-                                    <input type="password" class="form-control" id="pwd">
+                                    <label for="description">Description: </label>
+                                    <textarea required id="description" name="description" class="form-control" row="4"></textarea>
                                 </div>
-                                <div class="form-group form-check">
-                                    <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox"> Remember me
-                                    </label>
+                                <div class="modal-footer">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
                             </form> 
                         </div>
   
                         <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
-                        </div>
+                        
   
                     </div>
                 </div>
@@ -96,3 +134,7 @@
     </div>
     <!-- /page content -->
 {% endblock page_content %}
+
+{% block js %}
+    <script src="{% static 'dashboard/js/my-courses.js' %}"></script>
+{% endblock js %}

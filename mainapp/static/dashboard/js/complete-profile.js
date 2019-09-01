@@ -1,3 +1,5 @@
+var coursesList = [];
+var coursesListID = [];
 (function(){
     /*
         add event listener to load the faculties based on the selected institution when
@@ -23,6 +25,12 @@
         add event listener to select and add courses to list of tutor courses
     */
     document.getElementById("course").addEventListener('change', appendCourseToList);
+
+    $("#submitForm").validate({
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
 
 })();
 
@@ -78,40 +86,47 @@ function readImageUploadURL(input){
         let reader = new FileReader();
         reader.onload = function(e) {
             $("#upload-img").attr('src', e.target.result);
-            alert("hi");
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-function appendCourseToList(){
+function appendCourseToList() {
     let course = document.getElementById("course");
+    if (coursesList.includes(course.value.split('-')[1])) {
+        course.value = "";
+        return;
+    }
     let courses = document.getElementById("courses");
-    const oldValue = courses.innerHTML;
-    let newValue = oldValue;
-    console.log(course.value);
-    createCourseBadge(course.value);
+    coursesListID.push(course.value.split('-')[0]);
+    coursesList.push(course.value.split('-')[1]);
+    courses.innerHTML = createCourseBadges();
+    $("#txtAreaCourses").val(coursesListID.join(","));
+    courses.scrollTop = 80;
     course.value = "";
 }
 
-function createCourseBadge(courseCode){
-    let template = `${courseCode} <i class="fas fa-close"></i>`
-    let course = document.createElement("span");
-    course.innerHTML = template;
-    course.setAttribute("id", courseCode);
-    course.setAttribute("class", "badge badge-pill badge-primary");
-    course.style.marginRight = "8px";
-    course.style.marginBottom = "4px";
-    document.getElementById("courses").scrollTop = 80;
-    document.getElementById("courses").appendChild(course);
-    course.addEventListener("dblclick", removeCourseFromList(course));
-    console.log(typeof course);
-    return course;
+function createCourseBadges() {
+    let courseTemplate = '';
+    console.log('in course badge it is ', coursesList);
+    for (const course of coursesList) {
+        courseTemplate += `
+                            <span class="badge badge-pill badge-primary" ondblclick="removeCourseFromList('${course}')"
+                                style="margin-right: 8px; margin-bottom: 4px; cursor: pointer">
+                                ${course} <i class="fas fa-close"></i>
+                            </span>
+                        `
+    }
+    
+    return courseTemplate;
 }
 
-function removeCourseFromList(course) {
-    console.log("hello world");
-    let parentNode = document.getElementById("courses");
-    console.log(parentNode);
-    parentNode.removeChild(course);
+function removeCourseFromList(courseId) {
+    for (let i = 0; i < coursesList.length; i++) {
+        if (coursesList[i] === courseId) {
+            coursesList.splice(i, 1);
+        }
+    }
+    document.getElementById("courses").innerHTML = createCourseBadges();
+    $("#txtAreaCourses").val(coursesList.join(","));
 }

@@ -61,11 +61,15 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{% static 'images/profile.jpg' %}" alt="..." class="img-circle profile_img">
+                {% if student.profile_pic %}
+                <img src="{{student.profile_pic.url}}" alt="Profile Picture" class="img-circle profile_img">
+                {% else %}
+                <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture" class="img-circle profile_img">
+                {% endif %}
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>{{student.first_name}} {{student.last_name}}</h2>
+                <h2>{{student.first_name}}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -94,7 +98,7 @@
                       <li><a href="form_buttons.html">Form Buttons</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                  {% comment %} <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
                       <li><a href="media_gallery.html">Media Gallery</a></li>
@@ -127,7 +131,7 @@
                       <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                       <li><a href="fixed_footer.html">Fixed Footer</a></li>
                     </ul>
-                  </li>
+                  </li> {% endcomment %}
                 </ul>
               </div>
               <!-- <div class="menu_section">
@@ -206,7 +210,11 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{% static 'images/profile.jpg' %}" alt="">{{student.first_name}} {{student.last_name}}
+                    {% if student.profile_pic %}
+                    <img src="{{student.profile_pic.url}}" alt="Profile Picture" class="img-circle">
+                    {% else %}
+                    <img src="{% static 'images/profiles.jpg' %}" alt="Profile Picture" class="img-circle">
+                    {% endif %} {{student.first_name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

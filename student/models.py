@@ -6,7 +6,6 @@ from django.dispatch import receiver
 
 # app related imports
 from mainapp.models import Institution, Faculty, Department
-from tutor.models import TutorialSession
 
 # system related imports 
 from datetime import datetime
@@ -37,10 +36,6 @@ class Student(models.Model):
 
     def __str__(self):
         return self.first_name + self.last_name
-
-class BookedTutorialSession(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.PROTECT)
-    tutorial_session = models.ForeignKey(TutorialSession, on_delete=models.PROTECT)
 
 @receiver(models.signals.post_delete, sender=Student)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
