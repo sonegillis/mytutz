@@ -102,6 +102,7 @@ def pre_registration(request):
             ).save()
             return HttpResponse("")
         except smtplib.SMTPException as e:
+            print(e)
             return HttpResponse("Failed to send a secret token link. Perform the action again", status=404)
     
     # send a secret token via email to be used by tutors to complete registration process
@@ -118,6 +119,7 @@ def pre_registration(request):
             ).save()
             return HttpResponse("")
         except smtplib.SMTPException as e:
+            print(e)
             return HttpResponse("Failed to send a secret token link. Perform the action again", status=404)            
         
 def complete_registration(request):
