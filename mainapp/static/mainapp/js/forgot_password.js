@@ -51,7 +51,7 @@ $(function(){
                 dataType : 'text',
                 success : function(response){
                     swal({
-                        title: "Succesfully created your account",
+                        title: "Succesfully Changed Password",
                         text: "",
                         type: "success",
                         closeOnClickOutside: false,
@@ -59,7 +59,6 @@ $(function(){
                         allowOutsideClick: false,
                         }).then(function() {
                         // Redirect the user
-                        console.log('response is ', response);
                         window.location.href = response;
                     });                   
                 },
@@ -75,7 +74,7 @@ $(function(){
                         // Redirect the user
                         // window.location = xhr.responseText;
                     });
-                },               
+                }             
             //Your code for AJAX Ends
             }); 
             return false;

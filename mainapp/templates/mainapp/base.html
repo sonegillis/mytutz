@@ -324,12 +324,19 @@
 						<div class="search_background" style="background-image:url('../static/mainapp/img/search_background.jpg');"></div>
 						<div class="search_content text-center">
 							<h3 id="login_error" style="color:rgba(255,0,0,0.9)" class="hide">Email and password combination does not match</h3>
-							<form id="login_form" method="POST">
+							<form id="login_form" class="login_form" method="POST">
 								{% csrf_token %}
 								<input onkeypress="$('#login_error').hide();" id="signin_email" class="input_field search_form_category" type="email" name="signin_email" placeholder="Email">
-								<input onkeypress="$('#login_error').hide();" id="password" class="input_field search_form_degree" type="password" name="password" placeholder="password">
-								{% csrf_token %}
+								<input onkeypress="$('#login_error').hide();" id="password" class="input_field search_form_degree" type="password" name="password" placeholder="password">	
+								<p class="font-weight-bold text-left pointer_cursor" onclick="displayForgotPasswordForm()">Forgot Password?</p>
 								<button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">Log In</button>
+							</form>
+
+							<form id="forgot_password_form" class="hide forgot_password_form" method="POST">
+								{% csrf_token %}
+								<input id="forgot_password_email" class="input_field search_form_category" type="email" name="email" placeholder="Email">
+								<p class="font-weight-bold text-left">You have forgotten your password? We can help you create a new one</p>
+								<button id="forgot_password_btn" type="submit" class="search_submit_button trans_200" value="Submit">Submit</button>
 							</form>
 						</div> 
 					</div>

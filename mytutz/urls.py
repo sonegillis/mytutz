@@ -18,7 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from mainapp.views import homepage, pre_registration, complete_registration, verify_email, user_login, user_logout, \
-                            get_faculty_options, get_department_options
+                            get_faculty_options, get_department_options, pre_forgot_password, forgot_password
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +28,8 @@ urlpatterns = [
     path('faculty-options/', get_faculty_options, name="get-faculty-options"),
     path('department-options/', get_department_options, name="get-department-options"),
     path('verify-email/', verify_email, name="verify-email"),
+    path('pre-forgot-password/', pre_forgot_password, name="pre-forgot-password"),
+    path('forgot-password/', forgot_password, name="forgot_password"),
     path('student/', include(('student.urls', 'student'), namespace="student")),
     path('tutor/', include(('tutor.urls', 'tutor'), namespace="tutor")),
     path('login/', user_login, name="login"),

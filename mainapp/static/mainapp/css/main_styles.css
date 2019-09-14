@@ -1164,8 +1164,7 @@ input:last-of-type
 	outline: none !important;
 	border: solid 2px #ffb606;
 }
-.search_submit_button
-{
+.search_submit_button {
 	width: 100%;
 	height: 48px;
 	background: #ffb606;
@@ -1173,7 +1172,7 @@ input:last-of-type
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: 700;
-	margin-top: 28px;
+	margin-top: 12px;
 	border: none;
 	cursor: pointer;
 }
@@ -1573,4 +1572,9 @@ input:last-of-type
 .footer_social .menu_social_item:last-child
 {
 	margin-right: 0px;
+}
+
+/* custom classes */
+.pointer_cursor {
+	cursor: pointer;
 }

@@ -106,14 +106,12 @@ $(document).ready(function(){
 			$(element).tooltipster('show');
 		},
 		submitHandler: function(form) {
-			alert('hander');
 			let form_data = $("#login_form").serialize();
 			$.ajax({
 				type: 'POST',
 				url: '/login/',
 				data: form_data,
 				success: function(data, textStatus, jqXHR){
-					alert(data);
 					window.location.href = data;
 					$('#login_form input').tooltipster('hide');
 				},
@@ -121,6 +119,36 @@ $(document).ready(function(){
 					$("#login_error").show();
 					$('#login_form input').tooltipster('hide');
 				}
+			});
+		},
+	});
+
+	$("#forgot_password_form").validate({
+		rules: {
+			forgot_password_email: {
+				required: true,
+				email: true
+			}
+		},
+		messages: {
+			forgot_password_email: {
+				required: "this field is required",
+				email: "a valid email is required"
+			}
+		},
+		errorPlacement: function (error, element) {
+			$(element).tooltipster('content', $(error).text());
+			$(element).tooltipster('show');
+		},
+		submitHandler: function(form) {
+			$('#forgot_password_btn').html('Verifying....');
+			let form_data = $("#forgot_password_form").serialize();
+			$.ajax({
+				type: 'POST',
+				url: '/pre-forgot-password/',
+				data: form_data,
+				success: preForgotPasswordSuccess,
+				error: preForgotPasswordError
 			});
 		},
 	});
@@ -495,7 +523,7 @@ function preRegistrationSuccess(data, textStatus, jqXHR) {
 
 function preRegistrationError(jqXHR, exception) {
 	swal({
-		"title" : "Sorry",
+		"title" : "Ooppss!!! Sorry",
 		"text" : jqXHR.responseText,
 		"icon" : "error",
 		"button" : "Close",
@@ -504,4 +532,41 @@ function preRegistrationError(jqXHR, exception) {
 		allowOutsideClick: false,
 	});
 	displayJoinOptions();
+}
+
+function preForgotPasswordSuccess(data, textStatus, jqXHR) {
+	$('#forgot_password_btn').html('Submit');
+	swal({
+		"title" : "",
+		"text" : "We sent a link to your email. Click on it to create a new password",
+		"icon" : "info",
+		"button" : "Close",
+		closeOnClickOutside: false,
+		closeOnEsc: false,
+		allowOutsideClick: false,
+	});
+	$('.login_form').fadeIn(500);
+	$('.forgot_password_form').fadeOut(500);
+}
+
+function preForgotPasswordError(jqXHR, exception) {
+	$('#forgot_password_btn').html('Submit');
+	swal({
+		"title" : "Ooppss!!! Sorry",
+		"text" : jqXHR.responseText,
+		"icon" : "info",
+		"button" : "Close",
+		closeOnClickOutside: false,
+		closeOnEsc: false,
+		allowOutsideClick: false,
+	});
+	$('.login_form').fadeIn(500);
+	$('.forgot_password_form').fadeOut(500);
+}
+
+function displayForgotPasswordForm() {
+	$('#login_form input').tooltipster('hide');
+	$('.login_form').fadeOut(500, () => {
+		$('.forgot_password_form').fadeIn(500);
+	});
 }

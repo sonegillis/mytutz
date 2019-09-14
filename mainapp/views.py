@@ -17,7 +17,7 @@ from django.template.loader import render_to_string
 # application related imports
 from student.models import TemporaryStudentRegistration
 from tutor.models import TemporaryTutorRegistration
-from .models import User, Faculty, Department
+from .models import User, Faculty, Department, ForgotPasswordToken
 from student.models import Student
 from tutor.models import Tutor
 
@@ -94,7 +94,7 @@ def pre_registration(request):
 
         try:
             print('testing ', email)
-            send_mail(subject, msg, "Sone Gillis at MyTutz", [email,], False)
+            send_mail(subject, msg, "Bot at MyTutz", [email,], False)
             print('testing2')
             TemporaryStudentRegistration(
                 email = email,
@@ -112,7 +112,7 @@ def pre_registration(request):
         subject = "MyTutz Registration"
         msg = "Click " + activation_link + " to complete your tutor registration to MyTutz"
         try:
-            send_mail(subject, msg, "Sone Gillis at MyTutz", [email,], False)
+            send_mail(subject, msg, "Bot at MyTutz", [email,], False)
             TemporaryTutorRegistration(
                 email = email,
                 secret_token = secret_token
@@ -161,14 +161,58 @@ def complete_registration(request):
         group = Group.objects.get(name=category+"s") 
         group.user_set.add(user)
 
-        user = authenticate(email=email, password=password)
-        if category == "student":
-            TemporaryStudentRegistration.objects.filter(email=email).delete()
-        if category == "tutor":
-            TemporaryTutorRegistration.objects.filter(email=email).delete()
-        login(request, user)
-        return HttpResponseRedirect(reverse(category+":home"))
+        return HttpResponse('/#login')
         
+def pre_forgot_password(request):
+    print(request.POST)
+    email = request.POST["email"]
+    secret_token = generate_forgot_password_token()
+    print('email is ', email)
+    print('and token is ', secret_token)
+    activation_link = request.build_absolute_uri('/')+"forgot-password/?email="+email+"&key="+secret_token
+    subject = "MyTutz Forgotten Password"
+    msg = "Click " + activation_link + " to create a new password"
+    try:
+        send_mail(subject, msg, "Bot at MyTutz", [email,], False)
+        ForgotPasswordToken(
+            email = email,
+            secret_token = secret_token
+        ).save()
+        return HttpResponse("")
+    except smtplib.SMTPException as e:
+        print(e)
+        return HttpResponse("Failed to send a secret token link. Perform the action again", status=404)      
+
+def forgot_password(request):
+    secret_token = request.GET.get('key', '')
+    if request.method == "GET":
+        email = request.GET.get('email', '')
+        user = User.objects.filter(email=email)
+        category = list(user[0].groups.all())[0].name
+        print('category is ', category)
+        if category == 'students':
+            user = Student.objects.filter(user=user[0])
+        else:
+            user = Tutor.objects.filter(user=user[0])
+        # check for the validity of the email and key combination from the database
+        qs = ForgotPasswordToken.objects.filter(Q(email=email) & Q(secret_token=secret_token))
+        # if valid then prompt for complete registration and the email is not yet registered
+        if qs.exists() and user.exists():
+            template_name = "mainapp/forgot_password.html"
+            return render(request, template_name, {"user": user[0]})
+        # else display denial alert to the user
+        else:
+            return HttpResponse("Token is either expired or you are not a user")
+
+    if request.method == "POST":
+        email = request.POST["email"]
+        password = request.POST["password1"]
+        user = User.objects.get(email=email)
+        user.set_password(password)
+        user.save()
+        ForgotPasswordToken.objects.filter(email=email).delete()
+        return HttpResponse("/#login")
+
 def user_login(request):
     email = request.POST["signin_email"]
     password = request.POST["password"]
@@ -228,6 +272,19 @@ def sendEmail(destination_email, email_text):
     except Exception as e:
         print(e)
         return "error"
+
+def generate_forgot_password_token():
+    """
+        return
+        ------
+        secret_token: the 124 character unique key generated
+    """
+    while(True):
+        secret_token = secrets.token_urlsafe(60);
+        qs = ForgotPasswordToken.objects.filter(secret_token=secret_token)
+        if not qs.exists():
+            break
+    return secret_token
 
 def generate_token(category):
     """

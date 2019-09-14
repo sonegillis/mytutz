@@ -110,4 +110,7 @@ class Transaction(models.Model):
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
     amount = models.BigIntegerField(default=0)
     transaction_type = models.CharField(choices=transactions, max_length=15)
-    
+
+class ForgotPasswordToken(models.Model):
+    email = models.EmailField()
+    secret_token = models.CharField(max_length=124)

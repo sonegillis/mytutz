@@ -24,6 +24,11 @@ var coursesListID = [];
     /* 
         add event listener to select and add courses to list of tutor courses
     */
+   
+
+})();
+
+$(document).ready(function(){
     document.getElementById("course").addEventListener('change', appendCourseToList);
 
     $("#submitForm").validate({
@@ -31,8 +36,7 @@ var coursesListID = [];
             form.submit();
         }
     });
-
-})();
+});
 
 // get the current selected university and send it to the server to get all the faculties
 function getFacultyOptions(){
@@ -92,6 +96,7 @@ function readImageUploadURL(input){
 }
 
 function appendCourseToList() {
+    // alert('good');
     let course = document.getElementById("course");
     if (coursesList.includes(course.value.split('-')[1])) {
         course.value = "";
