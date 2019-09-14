@@ -147,7 +147,7 @@ def application_status(request):
     tutor = Tutor.objects.get(user=request.user)
     context = {
         "application_status" : tutor.application_status,
-        "tutor" : tutors
+        "tutor" : tutor
     }
     # print(tutor.profile_pic.url)
     if tutor.application_status == "pending": context["text_color"] = "text-primary"
