@@ -1,0 +1,27 @@
+{% load static from static %}
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    {% if tutorial.cover_image %}
+    <img class="cover-image" src="{{ tutorial.cover_image.url }}" alt="course cover image">
+    {% else %}
+    <img class="cover-image" src="{% static 'images/default-tutorial-session-cover.jpg' %}" alt="default tutorial session cover">
+    {% endif %}
+    <div class="session-description">
+        {{ tutorial.description }}
+    </div>
+    <div class="d-flex justify-content-center p-4">
+        <p class="course-title">{{ tutorial.course.title }}</p>
+        <p class="course-code">{{ tutorial.course.code }}</p>
+    </div>
+    <div class="tutor-info d-flex justify-content-between">
+        {% if tutorial.tutor.profile_pic %}
+        <img class="profile-pic" src="{{ tutorial.tutor.profile_pic.url }}" alt="tutor profile">
+        {% else %}
+        <img class="profile-pic" src="{% static 'images/default-profile-tutor.jpg' %}" alt="tutor profile">
+        {% endif %}
+        <div class="d-flex justify-content-end">
+            <p>{{ tutorial.tutorial_date }}</p>
+            <p>( {{ tutorial.from_time }} - {{ tutorial.to_time }} )</p>
+        </div>
+    </div>
+</div>

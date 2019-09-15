@@ -127,8 +127,8 @@ def auto_delete_on_pre_save(sender, instance, **kwargs):
     new_file3 = instance.cv
     print("I got the new file")
     if not new_file1 != old_file1:
-        print("Old file and new file are not equal")
-        if os.path.isfile(old_file1.path):
+        print("Old file and new file are not equal **** ", old_file1)
+        if old_file1 and os.path.isfile(old_file1.path):
             print("Old file is a file")
             os.remove(old_file1.path)
             print("Removed from file system")

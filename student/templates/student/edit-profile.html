@@ -53,7 +53,7 @@
                                 <div class="item form-group text-center">
                                     <div class="col-md-5 col-sm-5 col-xs-0"></div>
                                     <label class="custom-upload-1 col-md-3 col-sm-3 col-xs-12" for="profile-pic">
-                                        {% if student.profile_pic.url %}
+                                        {% if student.profile_pic %}
                                         <img  id="upload-img" src="{{student.profile_pic.url}}" alt="Profile Picture">
                                         {% else %}
                                         <img  id="upload-img" src="{% static 'images/default-profile-student.png' %}" alt="Default profile pic">

@@ -44,7 +44,7 @@
     <link href="{% static 'dashboard/css/custom.min.css' %}" rel="stylesheet">
     <link href="{% static 'dashboard/css/my-styles.css' %}" rel="stylesheet">
 
-
+    {% block css %} {% endblock css %}
   </head>
 
   <body class="nav-md">
@@ -64,7 +64,7 @@
                 {% if student.profile_pic %}
                 <img src="{{student.profile_pic.url}}" alt="Profile Picture" class="img-circle profile_img">
                 {% else %}
-                <img src="{% static 'images/profile.jpg' %}" alt="Profile Picture" class="img-circle profile_img">
+                <img src="{% static 'images/default-profile-student.png' %}" alt="Profile Picture" class="img-circle profile_img">
                 {% endif %}
               </div>
               <div class="profile_info">
@@ -88,7 +88,7 @@
                       <li><a href="index3.html">Dashboard3</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="{% url 'student:my-courses' %}"><i class="fa fa-book"></i>My Courses</a>
+                  <li><a href="{% url 'student:tutorial_sessions' %}"><i class="fa fa-book"></i>Tutorials</a>
                     <!-- <ul class="nav child_menu">
                       <li><a href="form.html">General Form</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -213,7 +213,7 @@
                     {% if student.profile_pic %}
                     <img src="{{student.profile_pic.url}}" alt="Profile Picture" class="img-circle">
                     {% else %}
-                    <img src="{% static 'images/profiles.jpg' %}" alt="Profile Picture" class="img-circle">
+                    <img src="{% static 'images/default-profile-student.png' %}" alt="Profile Picture" class="img-circle">
                     {% endif %} {{student.first_name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>

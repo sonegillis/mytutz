@@ -162,7 +162,6 @@ def application_status(request):
 @login_required
 def my_courses(request):
     tutor = Tutor.objects.get(user=request.user)
-    print("tutor profile pic url is ", tutor.profile_pic.url)
     tutor_courses = TutorCourse.objects.filter(tutor=tutor)
     locations = TutorialLocation.objects.all()
     tutorial_sessions = TutorialSession.objects.filter(tutor=tutor)

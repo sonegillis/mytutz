@@ -1,0 +1,27 @@
+.cover-image {
+    width: 100%;
+    height: 300px;
+}
+
+.session-description {
+    text-align: center;
+    font-size: 1.8em;
+    padding-top: 12px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 12px;
+    border: 4px solid rgba(38,185,154,.88);
+}
+
+.tutor-info {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    background: #eaebec;
+    align-items: center;
+}

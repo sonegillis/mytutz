@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 # app related imports
 from student.models import Student
 from mainapp.models import Institution, Faculty, Department, User
+from tutor.models import TutorialSession
 from mainapp.views import generate_referral_code, category_check_factory_dectorator
 
 #system related imports 
@@ -44,6 +45,7 @@ def home(request):
 @category_check_factory_dectorator('student')
 def complete_profile(request):
     institutions = Institution.objects.all()
+
     context = {
         "user": request.user,
         "institutions": institutions
@@ -58,9 +60,11 @@ def complete_profile(request):
             institution_id = request.POST["institution"],
             faculty_id = request.POST["faculty"],
             department_id = request.POST["department"],
+            profile_pic = request.FILES.get("profile_pic", None),
             tel = request.POST["tel"],
             referral_code = generate_referral_code("S")
         ).save()
+        print('saved student')
     return render(request, 'student/complete-profile.html', context)
 
 @profile_completion_redirect
@@ -100,7 +104,6 @@ def edit_profile(request):
     institutions = Institution.objects.all()
     faculties = Faculty.objects.all()
     departments = Department.objects.all()
-    print(student.profile_pic.url, "*********")
     context = {
         "user" : request.user,
         "student" : student,
@@ -114,10 +117,13 @@ def edit_profile(request):
 @category_check_factory_dectorator('student')
 @profile_completion_redirect
 @login_required
-def my_courses(request):
+def tutorial_sessions(request):
     student = Student.objects.get(user=request.user)
+    tutorials = TutorialSession.objects.all()
+    print(tutorials)
     context = {
-        'student': student
+        'student': student,
+        'tutorials': tutorials
     }
-    return render(request, 'student/my-courses.html', context)
+    return render(request, 'student/tutorial-sessions.html', context)
     
