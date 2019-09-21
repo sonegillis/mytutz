@@ -1,6 +1,6 @@
 {% load static from static %}
 
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
     {% if tutorial.cover_image %}
     <img class="cover-image" src="{{ tutorial.cover_image.url }}" alt="course cover image">
     {% else %}
@@ -13,15 +13,19 @@
         <p class="course-title">{{ tutorial.course.title }}</p>
         <p class="course-code">{{ tutorial.course.code }}</p>
     </div>
+    <div class="d-flex justify-content-end">
+        <p>{{ tutorial.tutorial_date }}</p>
+        <p>( {{ tutorial.from_time }} - {{ tutorial.to_time }} )</p>
+    </div>
     <div class="tutor-info d-flex justify-content-between">
         {% if tutorial.tutor.profile_pic %}
         <img class="profile-pic" src="{{ tutorial.tutor.profile_pic.url }}" alt="tutor profile">
         {% else %}
         <img class="profile-pic" src="{% static 'images/default-profile-tutor.jpg' %}" alt="tutor profile">
         {% endif %}
-        <div class="d-flex justify-content-end">
-            <p>{{ tutorial.tutorial_date }}</p>
-            <p>( {{ tutorial.from_time }} - {{ tutorial.to_time }} )</p>
-        </div>
+        <button id="btn-cart-{{tutorial.id}}" class="btn btn-success" onclick="addToCart('{{tutorial.id}}')"> 
+            <i id="btn-cart-icon-{{tutorial.id}}" class="fa fa-plus"></i>
+            <span id="btn-cart-text-{{tutorial.id}}"> ADD TO CART </span>
+        </button>
     </div>
 </div>
